@@ -1,68 +1,186 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
+:root {
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  --webkit-font-smoothing: antialiased;
+  --moz-osx-font-smoothing: grayscale;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --main-text-color: #fafafade;
+  --subtitle-text-color: #888888;
+  --text-color: hsla(8, 0%, 63%, 1);
+
+  --heading-text-color: hsla(0, 0%, 93%, 1);
+
+  --heading-text-size: 2.5rem;
+  --info-text-color: hsla(0, 0%, 63%, 1);
+
+  --page-width: 1440px;
+  --page-padding: 2rem;
 }
 
 body {
-  margin: 0;
+  font-family: "Geist", "Inter", sans-serif;
+
+  &::selection {
+    background: #0059ec;
+    color: #ffffff;
+  }
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 50px;
+}
+
+/* utility classes */
+.wrapper {
+  max-width: var(--page-width);
+  margin-inline: auto;
+  width: min(100% - var(--page-padding));
+  padding: 0 120px;
+
+  @media (max-width: 768px ) {
+    padding: 0 16px;
+  }
+}
+
+.btn {
+  text-decoration: none;
+  display: inline-block;
+  color: #111111;
+  background: linear-gradient(45deg, #c2c2c2, #fff);
+  border: none;
+  padding: 9px 16px;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  gap: 10px;
+  align-items: center;
+  font-size: 15px;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  border-radius: 99px;
+  margin-inline: auto;
+  margin-top: 25px;
+  z-index: 10;
+  position: relative;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  width: max-content;
+  user-select: none;
+  overflow: hidden;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+  &:hover {
+    box-shadow: 0 0 20px 0 rgba(240, 240, 240, 0.245);
+    transition: box-shadow 0.2s ease; 
+  }
+  &:before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient (
+      to right,
+      transparent 20%,
+      transparent 40%,
+      #fafafa 50%,
+      #fafafa 55%,
+      transparent 70%,
+      transparent 100%
+    );
+    transform: scale(3) rotate(45deg);
+    background-size: 20% auto;
+  }
+
+  &:hover::before {
+    background-position: 200%;
+    transition: background 1.5s ease, opacity 0.85s ease;
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.heading-text {
+  font-size: var(--heading-text-size);
+  font-weight: 600;
+  color: var(--heading-text-color);
+  line-height: 3.5rem;
+  letter-spacing: -0.08rem;
+}
+
+.info-text {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  color: var(--info-text-color);
+}
+
+.break-line {
+  display: block;
+
+  @media only screen and (max-width: 550px) {
+    display: inline;
   }
-  a:hover {
-    color: #747bff;
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      color: #213547;
+    }
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* Webkit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background-color: #2e2e2e;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #5c5c5c;
+  border-radius: 6px;
+  border: 2px solid #2e2e2e;
+}
+::webkit-scrollbar-thumb:hover,
+::webkit-scrollbar-thumb:active {
+  background-color: #7d7d7d;
+}
+
+/* Firefox */
+@supports (-moz-appearance: none) {
+  /* Fixed hover bug on chrome style--was getting overidden */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #5c5c5c #2e2e2e;
+  }
+}
+
+/* Twinkle star animation */
+.twinkle {
+  animation: twinkle 1.7s infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes twinkle {
+  from {
+    transform: scale(0.6);
+  }
+  to {
+    transform: scale(1);
   }
 }
