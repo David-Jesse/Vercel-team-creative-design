@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "motion/react";
-import "./ShootingStar.css";
+import "./ShootingStars.css";
 
 const duration = 0.6;
 const phaseDelay = 3.5;
