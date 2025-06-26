@@ -21,9 +21,9 @@ function TeamSection() {
       <SlidingText>{sliderTextContent}</SlidingText>
       <div className="wrapper">
         <h2 className="heading-text">
-          We're global <span>team,</span>
+          We're a global <span>team,</span>
           <span className="break-line" /> spread across{" "}
-          <span>10 countries</span>
+          <span>10 countries,</span>
           <span className="break-line" />
           <GlobeIcon />
           and fluent in <span>10 languages</span>

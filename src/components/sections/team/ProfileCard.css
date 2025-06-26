@@ -4,7 +4,7 @@
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.3);
   text-decoration: none;
-  --mouse-x: 0px;
+  --mouse-x: 0px; /* creates custom variables to track mouse position  */
   --mouse-y: 0px;
   background: rgba(0, 0, 0, 0.4);
   transform: translateZ(0);
