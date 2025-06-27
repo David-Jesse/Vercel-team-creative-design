@@ -15,7 +15,7 @@
     width: 30px;
   }
 
-  /* Visually hide noise asset in dom */
+  /* visually hide noise asset in dom */
   .noise-filter-visually-hidden {
     display: none;
   }
@@ -39,7 +39,7 @@
     margin-inline: auto;
   }
 
-  /* noise filter implementation */
+  /* nosie filter implementation */
   &::after {
     position: absolute;
     content: "";
@@ -51,14 +51,14 @@
 }
 
 .hero-content {
-    width: min(100% - 4rem);
-    max-width: 800px;
-    margin-inline: auto;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: min(100% - 4rem);
+  max-width: 800px;
+  margin-inline: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-title h1 {
@@ -67,7 +67,7 @@
   font-size: clamp(28px, 5vw, 52px);
   line-height: 72px;
   text-align: center;
-  color: var(--main-tex-color);
+  color: var(--main-text-color);
   margin-bottom: 30px;
   white-space: nowrap;
 
@@ -85,7 +85,7 @@
       display: inline-block;
       width: 6px;
       height: 6px;
-      background: #ffffff;
+      background: #fff;
       position: absolute;
       border: 1px solid #666666;
 
@@ -118,8 +118,8 @@
     bottom: -2px;
 
     svg {
-      width: 2.6rem;
-      /* Keeps size relative to the container's font size */
+      width: 2.6em;
+      /*keeps size relative to the container's font size in this case */
       height: 100%;
     }
 
