@@ -6,10 +6,11 @@ import {
   useTransform,
   useMotionValue,
   animate,
-} from "motion/react";
+  type Variants,
+} from "framer-motion";
 
 // Animation variants for outline paths (draws the outline with delay per path)
-const outlinePathVariants = (i: number) => ({
+const outlinePathVariants = (i: number): Variants => ({
   visible: {
     pathLength: 1,
     transition: {
@@ -21,7 +22,7 @@ const outlinePathVariants = (i: number) => ({
 });
 
 // Animation variants for mask paths (same as outline, but used for masking the fill)
-const maskPathVariants = (i: number) => ({
+const maskPathVariants = (i: number): Variants => ({
   visible: {
     pathLength: 1,
     transition: {
@@ -44,7 +45,7 @@ export default function LogoAnimation() {
 
   useEffect(() => {
     if (isInView) controls.start("visible");
-  }, [isInView]);
+  }, [isInView, controls]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const bounds = containerRef.current?.getBoundingClientRect();
